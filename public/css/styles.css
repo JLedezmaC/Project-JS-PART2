@@ -6,13 +6,45 @@
 
 #background {
   background-color: cornflowerblue;
-  display: none; }
+  display: none;
+  text-align: center;
+  position: relative; }
 
 #equis {
-  width: 35px; }
+  position: absolute;
+  top: 8px;
+  right: 12px; }
+
+#equis {
+  width: 35px;
+  cursor: pointer; }
 
 #wrapper {
   text-align: center; }
 
 body {
   background-color: black; }
+
+.imagenPadre img {
+  width: 400px; }
+
+#Search-bar h2 {
+  color: white;
+  padding-right: 10px;
+  font-size: 40px; }
+
+#Search-bar {
+  padding-bottom: 40px;
+  text-align: center; }
+
+#Search-bar input {
+  border: 4px solid cornflowerblue;
+  width: 160px; }
+
+#data-info {
+  width: 600px;
+  margin: 0 auto; }
+
+.padreLi li {
+  list-style: none;
+  padding-right: 42px; }
