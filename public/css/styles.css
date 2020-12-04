@@ -1,0 +1,18 @@
+.astyle {
+  font-size: 24px;
+  display: block;
+  color: white;
+  text-decoration: none; }
+
+#background {
+  background-color: cornflowerblue;
+  display: none; }
+
+#equis {
+  width: 35px; }
+
+#wrapper {
+  text-align: center; }
+
+body {
+  background-color: black; }
