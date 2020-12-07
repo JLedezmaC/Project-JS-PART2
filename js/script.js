@@ -3,21 +3,21 @@ const modalul = document.getElementById('lista-padre');
 const modal = document.getElementById('background');
 const modalh2 = document.getElementById('Country-title');
 const modalimg = document.getElementById('bandera');
-function countries (Paises){
-  wrapper.innerHTML='';
-  for(let i = 0; i<Paises.length; i++){
+function countries(Paises) {
+  wrapper.innerHTML = '';
+  for (let i = 0; i < Paises.length; i++) {
     const title = document.createElement('a');
-    title.setAttribute('class', 'astyle')
-    title.setAttribute('href', '#')
+    title.setAttribute('class', 'astyle');
+    title.setAttribute('href', '#');
     title.innerHTML = `${Paises[i].name}`;
     wrapper.appendChild(title);
-    title.addEventListener('click', ()=>{
+    title.addEventListener('click', () => {
       modal.style.display = 'block';
       wrapper.style.display = 'none';
-      modalul.innerHTML='';
+      modalul.innerHTML = '';
       modalh2.innerHTML = `${Paises[i].name}`;
-      modalimg.setAttribute('src', `${Paises[i].flag}`)
-      modalimg.setAttribute('alt', 'Imagen del Pais')
+      modalimg.setAttribute('src', `${Paises[i].flag}`);
+      modalimg.setAttribute('alt', 'Imagen del Pais');
       const lista1 = document.createElement('li');
       lista1.innerHTML = `Capital = ${Paises[i].capital}`;
       modalul.appendChild(lista1);
@@ -43,42 +43,36 @@ function countries (Paises){
       const coins = document.getElementById(`Coins${Paises[i].name}`);
       let idiom = '';
       let money = '';
-      for(let n = 0; n<Paises[i].languages.length;n++){
+      for (let n = 0; n < Paises[i].languages.length; n++) {
         const speak = `${Paises[i].languages[n].name} `;
         idiom = idiom.concat(speak);
       }
-      idioma.innerHTML= idiom;
-      for(let k = 0; k<Paises[i].currencies.length;k++){
+      idioma.innerHTML = `Idioma = ${idiom}`;
+      for (let k = 0; k < Paises[i].currencies.length; k++) {
         const divisa = `${Paises[i].currencies[k].name} `;
         money = money.concat(divisa);
       }
-      coins.innerHTML= money;
+      coins.innerHTML = `Moneda = ${money}`;
       const out = document.getElementById('equis');
-      out.addEventListener('click', () =>{
+      out.addEventListener('click', () => {
         modal.style.display = 'none';
         wrapper.style.display = 'block';
-      })
-    })
-  };
+      });
+    });
+  }
 }
 const form = document.getElementById('formulario');
-const input = document.getElementById('search');
-  fetch('https://restcountries.eu/rest/v2/all')
+fetch('https://restcountries.eu/rest/v2/all')
   .then((response) => response.json())
   .then((data) => {
-    let listaPaises = data;
-    console.log(listaPaises);
+    const listaPaises = data;
     countries(listaPaises);
-    form.addEventListener('input', (event)=>{
-    event.preventDefault();
-    let value = form.elements[0].value;
-    const PaisesEspecficos = listaPaises.filter((Pais)=>{
-      return Pais.name.includes(`${value}`)
-    })
-    if(PaisesEspecficos){
-      countries(PaisesEspecficos);
-    }
-  })
-});
-
-
+    form.addEventListener('input', (event) => {
+      event.preventDefault();
+      const value = form.elements[0].value;
+      const PaisesEspecficos = listaPaises.filter((Pais) => Pais.name.includes(`${value}`));
+      if (PaisesEspecficos) {
+        countries(PaisesEspecficos);
+      }
+    });
+  });
