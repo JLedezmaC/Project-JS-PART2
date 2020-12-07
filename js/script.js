@@ -70,7 +70,7 @@ fetch('https://restcountries.eu/rest/v2/all')
     form.addEventListener('input', (event) => {
       event.preventDefault();
       const value = form.elements[0].value;
-      const PaisesEspecficos = listaPaises.filter((Pais) => Pais.name.includes(`${value}`));
+      const PaisesEspecficos = listaPaises.filter((Pais) => Pais.name.toLowerCase().includes(`${value.toLowerCase()}`));
       if (PaisesEspecficos) {
         countries(PaisesEspecficos);
       }
